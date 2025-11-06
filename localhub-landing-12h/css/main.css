@@ -1,0 +1,133 @@
+/* LocalHub – 12h main.css (conciso) */
+/* Variables base y tema (Mejora 1 posible) */
+:root {
+  --bg: #ffffff; /* color de fondo principal en modo claro */
+  --fg: #111111; /* color del texto principal */
+  --brand: #1e293b; /* color de marca (usado para encabezados, hero, etc.) */
+  --accent: #0ea5e9; /* color de acento (botones, enlaces destacados) */
+  /* Familia tipográfica base: lista de fuentes del sistema */
+  --font-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, sans-serif;
+  /* Escala tipográfica fluida con clamp:
+     - step-0 es tamaño base
+     - step-1 y step-2 escalan con el ancho de la pantalla */
+  --step-0: 1rem;
+  --step-1: clamp(1.125rem, 1.5vw, 1.25rem);
+  --step-2: clamp(1.5rem, 3vw, 2rem);
+
+  /* Variables de espaciado reutilizables */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+}
+
+/* Modo oscuro automático */
+/* Esto permite que el tema cambie automáticamente según la preferencia del sistema.
+  práctica de accesibilidad visual*/
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1020;
+    --fg: #e6edf3;
+  }
+}
+
+/* Base + accesibilidad mínima */
+* {
+  box-sizing: border-box;
+} /* Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar). */
+
+body {
+  margin: 0; /* quita margen por defecto del body */
+  font-family: var(--font-base); /* usa la tipografía definida arriba */
+  background: var(--bg); /* fondo dinámico según el modo */
+  color: var(--fg);
+} /* color de texto principal */
+
+img {
+  max-width: 100%; /* evita que las imágenes se salgan de su contenedor */
+  height: auto;
+} /* mantiene la proporción original */
+
+:focus-visible {
+  outline: 2px solid currentColor; /* borde visible cuando se enfoca con teclado */
+  outline-offset: 2px;
+} /* pequeño margen entre el borde y el elemento */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+} /* lo mueve fuera de la pantalla por defecto */
+
+/* cuando el usuario lo enfoca (Tab), se vuelve visible */
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  background: #fff;
+  padding: 0.5rem 1rem;
+}
+
+/* Grid macro */
+main.layout {
+  display: grid; /*  grid layout para la estructura principal */
+  /* tres columnas: márgenes laterales fluidos (1fr) + contenido centrado (máx. 70 caracteres) */
+  grid-template-columns: 1fr minmax(0, 70ch) 1fr;
+  /* define las zonas del grid (áreas) */
+  grid-template-areas: "header header header" ". main ." "footer footer footer";
+  gap: var(--space-3); /* separación vertical entre secciones */
+}
+
+.site-header {
+  grid-area: header;
+} /* asigna el header al área "header" del grid */
+
+.site-footer {
+  grid-area: footer; /* asigna el footer al área "footer" */
+  padding: var(--space-2) 0; /* espacio arriba y abajo */
+  border-top: 1px solid #ddd;
+} /* línea superior para separar visualmente */
+
+/* Grid auto para cards */
+.grid-auto {
+  display: grid;
+  gap: var(--space-2); /* separación entre tarjetas */
+  /* distribución automática: tantas columnas como quepan, mínimo 18rem */
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+/* Flex micro */
+.site-nav {
+  display: flex;
+  align-items: center; /* centra verticalmente los items */
+  justify-content: space-between; /* separa logo y menú */
+  gap: var(--space-2); /* espacio entre elementos */
+  padding: var(--space-2) 0;
+} /* espacio vertical del nav */
+
+.nav-list {
+  display: flex; /* los <li> en línea */
+  gap: var(--space-2); /* separación entre enlaces */
+  list-style: none; /* quita viñetas */
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column; /* apila contenido verticalmente */
+  gap: 0.5rem; /* espacio entre título y texto */
+  padding: var(--space-2); /* espacio interno */
+  border: 1px solid #e5e7eb; /* borde gris suave */
+  border-radius: 0.75rem;
+} /* esquinas redondeadas */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem; /* tamaño del botón */
+  border-radius: 0.5rem; /* esquinas un poquito redondeadas */
+  text-decoration: none; /* quita el subrayado si es <a> */
+  background: var(--accent); /* color de fondo (azul) */
+  color: #fff;
+} /* texto blanco */
