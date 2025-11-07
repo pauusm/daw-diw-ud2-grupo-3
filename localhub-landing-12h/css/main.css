@@ -1,3 +1,5 @@
+
+
 /* LocalHub – 12h main.css (conciso) */
 /* Variables base y tema (Mejora 1 posible) */
 :root {
@@ -15,11 +17,13 @@
   --step-1: clamp(1.125rem, 1.5vw, 1.25rem);
   --step-2: clamp(1.5rem, 3vw, 2rem);
 
+
   /* Variables de espaciado reutilizables */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
 }
+
 
 /* Modo oscuro automático */
 /* Esto permite que el tema cambie automáticamente según la preferencia del sistema.
@@ -32,10 +36,12 @@
   }
 }
 
+
 /* Base + accesibilidad mínima */
 * {
   box-sizing: border-box;
 } /* Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar). */
+
 
 body {
   margin: 0; /* quita margen por defecto del body */
@@ -44,20 +50,24 @@ body {
   color: var(--fg);
 } /* color de texto principal */
 
+
 img {
   max-width: 100%; /* evita que las imágenes se salgan de su contenedor */
   height: auto;
 } /* mantiene la proporción original */
 
+/*Permite navegar con tabulador - REQUISITO ACCESIBILIDAD AA*/
 :focus-visible {
   outline: 2px solid currentColor; /* borde visible cuando se enfoca con teclado */
   outline-offset: 2px;
 } /* pequeño margen entre el borde y el elemento */
 
+
 .skip-link {
   position: absolute;
   left: -9999px;
 } /* lo mueve fuera de la pantalla por defecto */
+
 
 /* cuando el usuario lo enfoca (Tab), se vuelve visible */
 .skip-link:focus {
@@ -66,6 +76,12 @@ img {
   background: #fff;
   padding: 0.5rem 1rem;
 }
+
+
+
+
+/**/
+
 
 /* Grid macro */
 main.layout {
@@ -78,14 +94,17 @@ main.layout {
 }
 
 .site-header {
-  grid-area: header;
-} /* asigna el header al área "header" del grid */
+  grid-area: header; /* asigna el header al área "header" del grid */
+  border-bottom: 1px solid #ddd; /*Añade línea debajo de la cabecera */
+}
 
 .site-footer {
   grid-area: footer; /* asigna el footer al área "footer" */
   padding: var(--space-2) 0; /* espacio arriba y abajo */
   border-top: 1px solid #ddd;
+
 } /* línea superior para separar visualmente */
+
 
 /* Grid auto para cards */
 .grid-auto {
@@ -93,8 +112,12 @@ main.layout {
   gap: var(--space-2); /* separación entre tarjetas */
   /* distribución automática: tantas columnas como quepan, mínimo 18rem */
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+
 }
 
+
+
+/* De 2 a 4 columnas */
 /* Flex micro */
 .site-nav {
   display: flex;
@@ -104,22 +127,39 @@ main.layout {
   padding: var(--space-2) 0;
 } /* espacio vertical del nav */
 
+
 .nav-list {
   display: flex; /* los <li> en línea */
+
+
   gap: var(--space-2); /* separación entre enlaces */
   list-style: none; /* quita viñetas */
   margin: 0;
   padding: 0;
 }
 
+
 .card {
   display: flex;
   flex-direction: column; /* apila contenido verticalmente */
+  flex-wrap: wrap;
   gap: 0.5rem; /* espacio entre título y texto */
   padding: var(--space-2); /* espacio interno */
   border: 1px solid #e5e7eb; /* borde gris suave */
   border-radius: 0.75rem;
 } /* esquinas redondeadas */
+
+
+
+
+#servicios{
+   display: flex;
+   flex-direction: row; /* los elementos se colocan horizontalmente de izquierda a derecha*/
+   gap: var(--space-2);   /* espacio entre las tarjetas */
+   margin-top: var(--space-3); /* separa del hero */
+   flex-wrap: wrap;
+
+}
 
 .btn {
   display: inline-flex;
@@ -129,5 +169,67 @@ main.layout {
   border-radius: 0.5rem; /* esquinas un poquito redondeadas */
   text-decoration: none; /* quita el subrayado si es <a> */
   background: var(--accent); /* color de fondo (azul) */
-  color: #fff;
-} /* texto blanco */
+  color: #fff;/* texto blanco */
+  
+
+}
+
+/*Ajustar botón formulario*/
+.contact form .btn {
+  margin-bottom: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+/* tamaño de los input del formulario */
+.contact form input{
+  margin-bottom: var(--space-1); /*añade espacio por encima para separarlo de los campos del formulario*/
+}
+
+
+
+/*Responsive breakpoint - para móvil*/
+/*Dentro de los paréntesis se establece una condición, el ancho máximo si es para móviles el breakpoint,
+el ancho mínimo si es para escritorio*/
+/*El screen es para seleccionar solo pantallas(ordenadores, móviles...)*/
+@media screen and (max-width: 360px){
+ 
+.site-nav{
+  align-items: flex-start; /* Agrupa los elementos flex arriba del contenedor*/
+  gap: var(--space-1); /* añade separación vertical entre secciones */
+}
+
+  /* Ajustar layout general */
+main.layout{
+  /* Dejamos solo una columna*/
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "main" "footer";
+  /*Márgenes laterales para que no queden pegados al borde de la pantalla*/
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+}
+
+  /* Para que las tarjetas queden una debajo de otra */
+#servicios {
+  flex-direction: column; /* Se apila en columna */
+  align-items: flex-start; /* Agrupa los elementos flex en la izquierda */
+  
+}
+
+/*Ajustar botón formulario*/
+.contact form .btn {
+  width: 100%;/*El ancho del botón ocupará toda la pantalla*/
+ 
+}
+/*Ajustamos tamaño de las tarjetas*/
+.card{
+  width: 100%;
+}
+
+/* tamaño de los input del formulario */
+.contact form input{
+  width: 100%;
+ 
+}
+}
+
+
