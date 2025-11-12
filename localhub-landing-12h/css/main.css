@@ -38,9 +38,10 @@
 
 
 /* Base + accesibilidad mínima */
+/* Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar). */
 * {
   box-sizing: border-box;
-} /* Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar). */
+} 
 
 
 body {
@@ -63,10 +64,11 @@ img {
 } /* pequeño margen entre el borde y el elemento */
 
 
+/* lo mueve fuera de la pantalla por defecto */
 .skip-link {
   position: absolute;
   left: -9999px;
-} /* lo mueve fuera de la pantalla por defecto */
+} 
 
 
 /* cuando el usuario lo enfoca (Tab), se vuelve visible */
@@ -78,11 +80,6 @@ img {
 }
 
 
-
-
-/**/
-
-
 /* Grid macro */
 main.layout {
   display: grid; /*  grid layout para la estructura principal */
@@ -91,6 +88,25 @@ main.layout {
   /* define las zonas del grid (áreas) */
   grid-template-areas: "header header header" ". main ." "footer footer footer";
   gap: var(--space-3); /* separación vertical entre secciones */
+  grid-template-rows: auto auto auto; /* filas de altura automática */
+  padding: 0 var(--space-3) ; /* espacio arriba y abajo */ 
+}
+
+.hero{
+  grid-row: 1; /* hace que el hero esté en la primera fila */
+}
+
+#servicios{
+  grid-row: 2; /* hace que los servicios estén en la segunda fila */
+  display:flex;
+  flex-wrap: wrap; /* permite que los elementos se envuelvan a la siguiente línea si no caben */
+  gap: var(--space-2); /* espacio entre las tarjetas de servicio */
+  align-items: stretch;
+}
+
+
+.contact {
+  grid-row: 3; /* hace que la sección de contacto esté en la tercera fila */  
 }
 
 .site-header {
@@ -112,9 +128,9 @@ main.layout {
   gap: var(--space-2); /* separación entre tarjetas */
   /* distribución automática: tantas columnas como quepan, mínimo 18rem */
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-
+  justify-content: center; /* centra las tarjetas si hay espacio extra */ 
+ 
 }
-
 
 
 /* De 2 a 4 columnas */
@@ -124,42 +140,42 @@ main.layout {
   align-items: center; /* centra verticalmente los items */
   justify-content: space-between; /* separa logo y menú */
   gap: var(--space-2); /* espacio entre elementos */
-  padding: var(--space-2) 0;
-} /* espacio vertical del nav */
+  padding: var(--space-2) 0;/* espacio vertical del nav */
+  align-items: center; /* centra verticalmente los enlaces */ 
+} 
 
 
 .nav-list {
   display: flex; /* los <li> en línea */
-
-
   gap: var(--space-2); /* separación entre enlaces */
   list-style: none; /* quita viñetas */
   margin: 0;
   padding: 0;
+  align-items: center; /* centra verticalmente los enlaces */ 
+  
+
+}
+
+/* Quita subrayado a los enlaces del nav */
+.site-nav a {
+  text-decoration: none;
+ 
+}
+
+.nav-list a{
+  color:var(--accent);
 }
 
 
 .card {
   display: flex;
   flex-direction: column; /* apila contenido verticalmente */
-  flex-wrap: wrap;
   gap: 0.5rem; /* espacio entre título y texto */
   padding: var(--space-2); /* espacio interno */
   border: 1px solid #e5e7eb; /* borde gris suave */
-  border-radius: 0.75rem;
-} /* esquinas redondeadas */
-
-
-
-
-#servicios{
-   display: flex;
-   flex-direction: row; /* los elementos se colocan horizontalmente de izquierda a derecha*/
-   gap: var(--space-2);   /* espacio entre las tarjetas */
-   margin-top: var(--space-3); /* separa del hero */
-   flex-wrap: wrap;
-
-}
+  border-radius: 0.75rem;/* esquinas redondeadas */
+  
+} 
 
 .btn {
   display: inline-flex;
@@ -171,21 +187,27 @@ main.layout {
   background: var(--accent); /* color de fondo (azul) */
   color: #fff;/* texto blanco */
   
-
 }
 
 /*Ajustar botón formulario*/
 .contact form .btn {
   margin-bottom: var(--space-1);
   margin-top: var(--space-1);
+  width: 100%;
 }
 
 /* tamaño de los input del formulario */
 .contact form input{
   margin-bottom: var(--space-1); /*añade espacio por encima para separarlo de los campos del formulario*/
+  width: 100%;
+  border-radius: 0.3rem;/* esquinas redondeadas */
+
 }
 
-
+.brand{
+  color:var(--fg);
+  font-weight: bold; /*negrita*/
+}
 
 /*Responsive breakpoint - para móvil*/
 /*Dentro de los paréntesis se establece una condición, el ancho máximo si es para móviles el breakpoint,
