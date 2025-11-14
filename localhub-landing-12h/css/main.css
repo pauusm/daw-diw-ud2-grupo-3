@@ -22,6 +22,7 @@
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
+
 }
 
 
@@ -33,7 +34,9 @@
   :root {
     --bg: #0b1020;
     --fg: #e6edf3;
+    
   }
+
 }
 
 
@@ -63,8 +66,8 @@ img {
 /*Permite navegar con tabulador - REQUISITO ACCESIBILIDAD AA*/
 :focus-visible {
   outline: 2px solid currentColor; /* borde visible cuando se enfoca con teclado */
-  outline-offset: 2px;
-} /* pequeño margen entre el borde y el elemento */
+  outline-offset: 2px; /* pequeño margen entre el borde y el elemento */
+} 
 
 
 /* lo mueve fuera de la pantalla por defecto */
@@ -89,6 +92,7 @@ main.layout {
   grid-template-columns: minmax(1rem, 1fr) minmax(0, 70ch) minmax(1rem, 1fr);
   gap: var(--space-3);
 }
+
 
 main.layout > * {
   grid-column: 2; /* todas las secciones en la columna central */
@@ -125,6 +129,8 @@ main.layout > * {
   gap: var(--space-2); /* espacio entre elementos */
   padding: var(--space-2) 0;/* espacio vertical del nav */
   align-items: center; /* centra verticalmente los enlaces */ 
+   max-width: 70ch; /* Para que quede al mismo ancho que la columna central PAULA */
+   margin: auto; /*Para centrarlo PAULA*/
 } 
 
 
@@ -157,7 +163,6 @@ main.layout > * {
   padding: var(--space-2); /* espacio interno */
   border: 1px solid #e5e7eb; /* borde gris suave */
   border-radius: 0.75rem;/* esquinas redondeadas */
-  
 } 
 
 .btn {
@@ -172,18 +177,21 @@ main.layout > * {
   
 }
 
-/*Ajustar botón formulario*/
+/*Ajustar botón formulario "Enviar"*/
 .contact form .btn {
   margin-bottom: var(--space-1);
   margin-top: var(--space-1);
   width: 100%;
+  border: 1px solid var(--accent); /*Borde más fino PAULA*/
+
 }
 
 /* tamaño de los input del formulario */
 .contact form input{
-  margin-bottom: var(--space-1); /*añade espacio por encima para separarlo de los campos del formulario*/
+  margin-bottom: var(--space-2); /*añade espacio por encima para separarlo de los campos del formulario*/
   width: 100%;
   border-radius: 0.3rem;/* esquinas redondeadas */
+  border: 1px solid #ccc; /*Borde más fino PAULA*/
 
 }
 
@@ -192,21 +200,43 @@ main.layout > * {
   font-weight: bold; /*negrita*/
 }
 
+
+/* PAULA*/
+.site-footer {
+  padding: var(--space-2) 0; /* espacio arriba y abajo */
+  border-top: 1px solid #ddd; /* Añade linea */
+  width: 70ch; /* Ancho */
+  margin:auto; /* Centra la línea*/
+
+} /* línea superior para separar visualmente */
+
+/* PAULA*/
+.site-header {
+  border-bottom: 1px solid #ddd; /*Añade línea debajo de la cabecera */
+  width: 70ch;
+  margin:auto;
+}
+
+
+
+
 /*Responsive breakpoint - para móvil*/
 /*Dentro de los paréntesis se establece una condición, el ancho máximo si es para móviles el breakpoint,
 el ancho mínimo si es para escritorio*/
 /*El screen es para seleccionar solo pantallas(ordenadores, móviles...)*/
-@media screen and (max-width: 768px){
+@media screen and (max-width: 360px){
  
 .site-nav{
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; /* Agrupa los elementos flex arriba del contenedor*/
+  gap: var(--space-1); /* añade separación vertical entre secciones */
 }
 
   /* Ajustar layout general */
 main.layout{
   /* Dejamos solo una columna*/
   grid-template-columns: 1fr;
+  grid-template-areas: "header" "main" "footer";
+  /*Márgenes laterales para que no queden pegados al borde de la pantalla*/
   padding-left: var(--space-2);
   padding-right: var(--space-2);
 }
@@ -233,15 +263,5 @@ main.layout{
   width: 100%;
  
 }
-.grid-auto {
-    grid-template-columns: 1fr; /* cards en una columna */
-  }
-
-  .card,
-  .contact form .btn,
-  .contact form input {
-    width: 100%;
-  }
 }
-
 
