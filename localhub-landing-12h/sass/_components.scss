@@ -1,3 +1,4 @@
+/* BOTONES */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -13,16 +14,18 @@
   }
 }
 
+/* TARJETAS */
 .card {
-  display: flex;
-  flex-direction: column;
-  gap: $space-1;
-  padding: $space-2;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: $radius;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    width: 100%;
+    padding: $space-2;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: $radius;
 
-  h3 {
-    margin: 0;
+    h3 {
+      margin: 0;
+    }
   }
-}
