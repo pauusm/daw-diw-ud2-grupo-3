@@ -50,7 +50,7 @@ Si sobrase espacio e, las tarjetas crecen y se distribuyen de forma equilibrada.
 
 ## Guía de ejecución SASS
 
-## 1. Requisitos previos
+### 1. Requisitos previos
 
 Antes de comenzar, asegúrate de tener instalado:
 
