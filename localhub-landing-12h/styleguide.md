@@ -27,12 +27,12 @@ Foco visible, contraste AA, navegación por teclado, labels/aria-*.
 
 ## Componentes principales
 - Navegación: `.site-nav`
-Layout: `display: flex`; `justify-content: space-between`; `align-items: center`
 
-- Logo a la izquierda, enlaces a la derecha.
-**gap** entre enlaces: `var(--space-2)`
-Sin lista de puntos: `list-style: none`
-Enlaces con color de acento: `var(--accent)`
+- Layout: `display: flex`; `justify-content: space-between`; `align-items: center`
+  - Logo a la izquierda, enlaces a la derecha.
+  - **gap** entre enlaces: `var(--space-2)`
+  - Sin lista de puntos: `list-style: none`
+  - Enlaces con color de acento: `var(--accent)`
 
 - Tarjeta: `.card`
   - Propiedades
