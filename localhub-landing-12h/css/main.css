@@ -76,6 +76,7 @@ body {
   font-family: var(--font-base); /* usa la tipografía definida arriba */
   background: var(--bg); /* fondo dinámico según el modo */
   color: var(--fg); /* color de texto principal */
+  line-height: 1.6;
 }
 
 /* Enfoque accesible - Permite navegar con tabulador */
@@ -98,7 +99,7 @@ body {
   background: #fff;
   color: black;
   padding: .5rem 1rem;
-
+  z-index: 1000;
 }
 
 
@@ -332,43 +333,16 @@ el ancho mínimo si es para escritorio*/
 }
 
 /*Responsive breakpoint - para móvil*/
-@media screen and (max-width: 360px){
- 
-.site-nav{
-  align-items: flex-start; /* Agrupa los elementos flex arriba del contenedor*/
-  gap: var(--space-1); /* añade separación vertical entre secciones */
-}
+@media (max-width: 480px) {
 
-  /* Ajustar layout general */
-main.layout{
-  /* Dejamos solo una columna*/
-  grid-template-columns: 1fr;
-  grid-template-areas: "header" "main" "footer";
-  /*Márgenes laterales para que no queden pegados al borde de la pantalla*/
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
-}
+  /* Menú vertical */
+  .site-nav {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
 
-  /* Para que las tarjetas queden una debajo de otra */
-#servicios {
-  flex-direction: column; /* Se apila en columna */
-  align-items: flex-start; /* Agrupa los elementos flex en la izquierda */
-  
-}
-
-/*Ajustar botón formulario*/
-.contact form .btn {
-  width: 100%;/*El ancho del botón ocupará toda la pantalla*/
- 
-}
-/*Ajustamos tamaño de las tarjetas*/
-.card{
-  width: 100%;
-}
-
-/* tamaño de los input del formulario */
-.contact form input{
-  width: 100%;
- 
-}
+  /* Enlaces de navegación más separados */
+  .nav-list {
+    gap: var(--space-4);
+  }
 }
