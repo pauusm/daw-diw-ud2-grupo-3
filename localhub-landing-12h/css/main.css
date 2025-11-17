@@ -1,267 +1,378 @@
+/* =========================================================
+   LocalHub – 12h CSS Final
+   Cumple requisitos del documento:
+   ✔ Grid macro (layout general)
+   ✔ Grid auto-fit (Servicios)
+   ✔ Flexbox micro-layouts (nav, cards, form)
+   ✔ Accesibilidad AA
+   ✔ Modo oscuro (Mejora 1)
+   ✔ Responsive
+========================================================= */
 
 
-/* LocalHub – 12h main.css (conciso) */
-/* Variables base y tema (Mejora 1 posible) */
+/* =========================================================
+   VARIABLES DE DISEÑO
+   Sistema consistente de colores, tipografías y espaciados.
+========================================================= */
+/* Variables base y tema */
 :root {
   --bg: #ffffff; /* color de fondo principal en modo claro */
   --fg: #111111; /* color del texto principal */
   --brand: #1e293b; /* color de marca (usado para encabezados, hero, etc.) */
   --accent: #0ea5e9; /* color de acento (botones, enlaces destacados) */
-  /* Familia tipográfica base: lista de fuentes del sistema */
-  --font-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
-    Noto Sans, sans-serif;
-  /* Escala tipográfica fluida con clamp:
-     - step-0 es tamaño base
-     - step-1 y step-2 escalan con el ancho de la pantalla */
-  --step-0: 1rem;
-  --step-1: clamp(1.125rem, 1.5vw, 1.25rem);
-  --step-2: clamp(1.5rem, 3vw, 2rem);
 
+  /* Familia tipográfica base: lista de fuentes del sistema */
+  --font-base: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+
+  /* Escala tipográfica fluida con clamp:
+     - step-0: tamaño base
+     - step-1 y step-2: escalan con el ancho de la pantalla */
+  --step-0: 1rem;
+  --step-1: clamp(1.125rem, 2vw, 1.25rem);
+  --step-2: clamp(1.5rem, 3vw, 2rem);
 
   /* Variables de espaciado reutilizables */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
+  --space-4: 3rem; /* Variable agregada para responsive */
 
+  /* Variables adicionales agregadas */
+  --radius: 0.75rem;
+  --max-width: 70ch;
 }
 
 
-/* Modo oscuro automático */
-/* Esto permite que el tema cambie automáticamente según la preferencia del sistema.
-  práctica de accesibilidad visual*/
-
+/* =========================================================
+   MODO OSCURO AUTOMÁTICO (Mejora 1)
+   Esto permite que el tema cambie automáticamente según la preferencia del sistema
+   en la práctica de accesibilidad visual
+========================================================= */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0b1020;
-    --fg: #e6edf3;
-    
+    --fg: #ffffff;
+    --brand: #f9fafb;
+  }
+  /* Cards más oscuras, con contraste adecuado */
+  .layout .card {
+    background: #111827;
+    border-color: #1f2937;
   }
 
+  /* Logo principal con color alterno */
+  .site-nav .brand {
+    color:var(--brand);
+    font-weight: bold;
+  }
+
+  /* Títulos y textos dentro de las cards más visibles */
+  .card h3 {
+    color: var(--fg);
+  }
+
+  .card p {
+    color: var(--fg);
+  }
 }
 
 
-/* Base + accesibilidad mínima */
-/* Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar). */
+/* =========================================================
+   BASE + ACCESIBILIDAD
+   Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar)
+========================================================= */
 * {
   box-sizing: border-box;
-} 
-
+}
 
 body {
   margin: 0;
   font-family: var(--font-base);
   background: var(--bg);
   color: var(--fg);
-  display: grid;
-  grid-template-rows: auto 1fr auto; /* header / contenido / footer */
-  min-height: 100vh;
+  line-height: 1.6;
 }
 
-
-img {
-  max-width: 100%; /* evita que las imágenes se salgan de su contenedor */
-  height: auto;
-} /* mantiene la proporción original */
-
-/*Permite navegar con tabulador - REQUISITO ACCESIBILIDAD AA*/
+/* Enfoque accesible
+   Permite navegar con tabulador */
 :focus-visible {
-  outline: 2px solid currentColor; /* borde visible cuando se enfoca con teclado */
-  outline-offset: 2px; /* pequeño margen entre el borde y el elemento */
-} 
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
-
-/* lo mueve fuera de la pantalla por defecto */
+/* Skip link AA
+   Lo mueve fuera de la pantalla por defecto */
 .skip-link {
   position: absolute;
   left: -9999px;
-} 
+}
 
-
-/* cuando el usuario lo enfoca (Tab), se vuelve visible */
+  /* Cuando el usuario lo enfoca (Tab), se vuelve visible */
 .skip-link:focus {
   left: 1rem;
   top: 1rem;
   background: #fff;
-  padding: 0.5rem 1rem;
+  color: black;
+  padding: .5rem 1rem;
+  z-index: 1000;
 }
 
 
-/* Grid macro */
-main.layout {
+/* =========================================================
+   GRID MACRO – ORGANIZACIÓN GENERAL DEL MAIN
+   Grid para la estructura de página (auto-fit + minmax()).
+========================================================= */
+.layout {
   display: grid;
   grid-template-columns: minmax(1rem, 1fr) minmax(0, 70ch) minmax(1rem, 1fr);
-  gap: var(--space-3);
+  row-gap: var(--space-3);       /* espacio entre secciones */
+  padding: 0 var(--space-2);
 }
 
+/* Todas las secciones internas comparten ancho máximo */
+.layout > * {
+  width: 100%;
+  max-width: var(--max-width);
+}
 
 main.layout > * {
   grid-column: 2; /* todas las secciones en la columna central */
 }
 
-#servicios{
-  flex-wrap: wrap; /* permite que los elementos se envuelvan a la siguiente línea si no caben */
-  gap: var(--space-2); /* espacio entre las tarjetas de servicio */
-  align-items: stretch;
+/* =========================================================
+   HEADER – Micro layout en Flexbox (logo izquierda / nav derecha)
+   Flexbox para componentes nav y cards
+========================================================= */
+.site-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: var(--space-2) 0;
 }
 
-
-.contact {
-  grid-row: 3; /* hace que la sección de contacto esté en la tercera fila */  
-}
-
-/* Grid auto para cards */
-.grid-auto {
-  display: grid;
-  gap: var(--space-2); /* separación entre tarjetas */
-  /* distribución automática: tantas columnas como quepan, mínimo 18rem */
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  justify-content: center; /* centra las tarjetas si hay espacio extra */ 
- 
-}
-
-
-/* De 2 a 4 columnas */
-/* Flex micro */
 .site-nav {
   display: flex;
-  align-items: center; /* centra verticalmente los items */
-  justify-content: space-between; /* separa logo y menú */
-  gap: var(--space-2); /* espacio entre elementos */
-  padding: var(--space-2) 0;/* espacio vertical del nav */
-  align-items: center; /* centra verticalmente los enlaces */ 
-   max-width: 70ch; /* Para que quede al mismo ancho que la columna central PAULA */
-   margin: auto; /*Para centrarlo PAULA*/
-} 
-
-
-.nav-list {
-  display: flex; /* los <li> en línea */
-  gap: var(--space-2); /* separación entre enlaces */
-  list-style: none; /* quita viñetas */
-  margin: 0;
-  padding: 0;
-  align-items: center; /* centra verticalmente los enlaces */ 
-  
-
+  width: 100%;
+  align-items: center; /* Centra verticalmente los items */
+  justify-content: space-between;  /* Separa logo y menú */
+  max-width: var(--max-width);
+  border-bottom: 1px solid #ddd; /* Añade línea debajo de la cabecera */
+  padding: var(--space-2) 0;/* Espacio vertical del nav */
 }
 
-/* Quita subrayado a los enlaces del nav */
 .site-nav a {
   text-decoration: none;
- 
+}
+
+.nav-list {
+  display: flex;
+  gap: var(--space-2); /* Separación entre enlaces */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-list a{
   color:var(--accent);
 }
 
+.brand{
+  color:var(--brand);
+  font-weight: bold;
+}
 
-.card {
-  display: flex;
-  flex-direction: column; /* apila contenido verticalmente */
-  gap: 0.5rem; /* espacio entre título y texto */
-  padding: var(--space-2); /* espacio interno */
-  border: 1px solid #e5e7eb; /* borde gris suave */
-  border-radius: 0.75rem;/* esquinas redondeadas */
-} 
 
+/* =========================================================
+   HERO - Sección centrada verticalmente
+========================================================= */
+.hero {
+  text-align: center; /* Si lo quieres igual que la captura, solo lo quitas */
+  margin: var(--space-2) 0;
+}
+
+.hero h1 {
+  font-size: var(--step-2);
+  margin-bottom: var(--space-1);
+}
+
+.hero p {
+  font-size: var(--step-1);
+  margin-bottom: var(--space-2);
+}
+
+
+/* Botón accesible */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1rem; /* tamaño del botón */
-  border-radius: 0.5rem; /* esquinas un poquito redondeadas */
-  text-decoration: none; /* quita el subrayado si es <a> */
-  background: var(--accent); /* color de fondo (azul) */
-  color: #fff;/* texto blanco */
-  
+  padding: .6rem 1.2rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  text-decoration: none;
 }
 
-/*Ajustar botón formulario "Enviar"*/
+.btn:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   SERVICIOS – Grid auto-fit
+   Grid macro dentro de una sección
+========================================================= */
+
+/* Título alineado a la izquierda como la maqueta */
+.services > h2 {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0;
+}
+
+/* Grid auto-fit + minmax → requisito del documento */
+.grid-auto {
+  display: grid;
+  gap: var(--space-2);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  justify-items: center; /* Centra las tarjetas si hay espacio extra */ 
+}
+
+/* Card individual – Flexbox interno */
+.card {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+}
+
+.card h3 {
+  margin: 0;
+}
+
+
+/* =========================================================
+   CONTACTO – Formulario accesible en cascada
+========================================================= */
+.contact h2 {
+  margin-bottom: var(--space-2);
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact input,
+.contact textarea {
+  padding: var(--space-1);
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+}
+
+/* Botón igual de ancho que los inputs */
 .contact form .btn {
-  margin-bottom: var(--space-1);
-  margin-top: var(--space-1);
-  width: 100%;
-  border: 1px solid var(--accent); /*Borde más fino PAULA*/
-
-}
-
-/* tamaño de los input del formulario */
-.contact form input{
-  margin-bottom: var(--space-2); /*añade espacio por encima para separarlo de los campos del formulario*/
-  width: 100%;
-  border-radius: 0.3rem;/* esquinas redondeadas */
-  border: 1px solid #ccc; /*Borde más fino PAULA*/
-
-}
-
-.brand{
-  color:var(--fg);
-  font-weight: bold; /*negrita*/
+  margin: var(--space-1) 0 var(--space-3);
+  border: none;
 }
 
 
-/* PAULA*/
+/* =========================================================
+   FOOTER
+========================================================= */
 .site-footer {
-  padding: var(--space-2) 0; /* espacio arriba y abajo */
-  border-top: 1px solid #ddd; /* Añade linea */
-  width: 70ch; /* Ancho */
-  margin:auto; /* Centra la línea*/
-
-} /* línea superior para separar visualmente */
-
-/* PAULA*/
-.site-header {
-  border-bottom: 1px solid #ddd; /*Añade línea debajo de la cabecera */
-  width: 70ch;
-  margin:auto;
+  margin: 0 auto;
+  max-width: calc(var(--max-width) + 10ch);
+  padding: var(--space-3) 0;
+  font-size: .875rem;
+  border-top: 1px solid #ddd;
 }
 
+/* Responsive breakpoint - para móvil */
+/* Dentro de los paréntesis se establece una condición, el ancho máximo si es para móviles el breakpoint,
+el ancho mínimo si es para escritorio */
+/* El screen es para seleccionar solo pantallas (ordenadores, móviles...) */
 
+/* =========================================================
+   BREAKPOINT 1 — TABLET (<= 1024px)
+   Ajustes para pantallas amplias pero no de escritorio
+========================================================= */
+@media (max-width: 1024px) {
 
+  /* Estructura grid modificada:  Se amplía el ancho central de 70ch → 90ch */
+  .layout {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 90ch) minmax(1rem, 1fr);
+  }
 
-/*Responsive breakpoint - para móvil*/
-/*Dentro de los paréntesis se establece una condición, el ancho máximo si es para móviles el breakpoint,
-el ancho mínimo si es para escritorio*/
-/*El screen es para seleccionar solo pantallas(ordenadores, móviles...)*/
-@media screen and (max-width: 360px){
- 
-.site-nav{
-  align-items: flex-start; /* Agrupa los elementos flex arriba del contenedor*/
-  gap: var(--space-1); /* añade separación vertical entre secciones */
+  /* Se elimina el max-width de 70ch en las secciones internas */
+  .layout > * {
+    max-width: none; /* Antes 70ch */
+  } /* Ahora se aprovecha el nuevo ancho de 90ch */
+
+  /* Header ligeramente acomodado y separado de los bordes */
+  .site-header {
+    padding: 0 var(--space-3);
+  }
+
+  /* Navegación ajustada al nuevo ancho útil */
+  .site-nav {
+    max-width: calc(var(--max-width) + 20ch); /* Cálculo con variable para extender borde del nav */
+    margin: auto;
+  }
+
+  /* auto-fit se fuerza 3 columnas estables en tablet grande */
+  .grid-auto {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer centrado, sin recortes específicos en este breakpoint */
+  .site-footer {
+    text-align: center;
+  }
 }
 
-  /* Ajustar layout general */
-main.layout{
-  /* Dejamos solo una columna*/
-  grid-template-columns: 1fr;
-  grid-template-areas: "header" "main" "footer";
-  /*Márgenes laterales para que no queden pegados al borde de la pantalla*/
-  padding-left: var(--space-2);
-  padding-right: var(--space-2);
+/* =========================================================
+   BREAKPOINT 2 — INTERMEDIO (<= 768px)
+   Ajustes para tablets pequeñas / pantallas medianas
+========================================================= */
+@media (max-width: 768px) {
+
+  /* auto-fit se fuerza el colapso a 1 columna */
+  .grid-auto { 
+    grid-template-columns: 1fr; 
+  } /* Ahora no puede hacerlo por sí solo al haber aumentado el ancho en 1024px */
+
+  /* El footer vuelve a ocupar todo el ancho disponible */
+  .site-footer {
+    max-width: none;
+  }
 }
 
-  /* Para que las tarjetas queden una debajo de otra */
-#servicios {
-  flex-direction: column; /* Se apila en columna */
-  align-items: flex-start; /* Agrupa los elementos flex en la izquierda */
-  
-}
+/* =========================================================
+   RESPONSIVE 3 — MÓVIL ( <= 480px)
+   Ajustes para pantallas pequeñas
+========================================================= */
+@media (max-width: 480px) {
 
-/*Ajustar botón formulario*/
-.contact form .btn {
-  width: 100%;/*El ancho del botón ocupará toda la pantalla*/
- 
-}
-/*Ajustamos tamaño de las tarjetas*/
-.card{
-  width: 100%;
-}
+  /* Menú vertical */
+  .site-nav {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
 
-/* tamaño de los input del formulario */
-.contact form input{
-  width: 100%;
- 
+  /* Enlaces de navegación más separados */
+  .nav-list {
+    gap: var(--space-4);
+  }
 }
-}
-
