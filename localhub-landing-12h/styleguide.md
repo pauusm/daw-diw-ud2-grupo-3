@@ -40,15 +40,15 @@ Foco visible, contraste AA, navegación por teclado, labels/aria-*.
 - Títulos: `h3` y párrafos `p` con colores adaptados al modo claro/oscuro.
 - Botón: `.btn`
 - Propiedades:
-  `display`: `inline-flex`, centrado
-  `padding`: `6rem` `1.2rem`
-  Fondo: `var(--accent)`
-  Color: `#ffffff`
-  Borde redondeado: `var(--radius)`
- ` text-decoration: none`
+  - `display`: `inline-flex`, centrado
+  - `padding`: `6rem` `1.2rem`
+  - Fondo: `var(--accent)`
+  - Color: `#ffffff`
+  - Borde redondeado: `var(--radius)`
+  - `text-decoration: none`
 - Estados:
-  `:hover` → `opacity: 0.9`
-  `:focus-visible` → `outline: 2px solid var(--accent)`, `outline-offset: 2px`
+  - `:hover` → `opacity: 0.9`
+  - `:focus-visible` → `outline: 2px solid var(--accent)`, `outline-offset: 2px`
 
 ## Estados de foco
 - `outline: 2px solid var(--accent)`;
