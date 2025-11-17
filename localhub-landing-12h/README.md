@@ -40,13 +40,14 @@
 ---
 
 ## Descripción del proyecto y decisiones de diseño
--Añadimos 3 variables adicionales: 
-- Se definió 3 columnas en el grid, la columna central contiene el contenido y las columnas laterales actúan de márgenes.
-- No usamos grid template areas en el layout principal porque es mas sencillo y requiere de menos código utilizar minmax(), evitamos definir nombres a cada sección. 
-- Flexbox con micro layout nos pareció mas útil para elementos lineales y componentes más pequeños y dejar Grid para el esqueleto global.
-En el formulario flex nos facilitó que los inputs se apilen con el mismo espaciado, en el header permite colocar el logo a la izquierda y el nav a la derecha....
-- uto-fit con minmax() en las tarjetas ayuda a colocar automáticamente tantas columnas como quepan asegurando que ninguna tarjeta sea más pequeña de, este caso, 18rem. 
-Si sobrase espacio e, las tarjetas crecen y se distribuyen de forma equilibrada.
+- Añadimos **3 variables adicionales** para mejorar la consistencia del diseño: `--radius`, `--max-width` y espaciados adicionales: `--space-4`.
+- Se definieron **3 columnas en el grid principal**: la columna central contiene el contenido y las columnas laterales funcionan como márgenes fluidos.
+- Decidimos no usar `grid-template-areas` en el layout principal porque es mas sencillo y requiere de menos código utilizar `minmax()`, con esto también evitamos definir nombres a cada sección.
+- Se utilizó **Flexbox** como micro-layout, nos pareció más útil para elementos lineales o componentes pequeños (header, formulario, contenido de las tarjetas), dejando **Grid** para la estructura global de la página.
+- En el formulario, **Flexbox** permitió apilar los inputs con el mismo espaciado; en el header permitió colocar el **logo** a la izquierda y el **nav** a la derecha sin complicaciones.
+- El uso de **`auto-fit` junto con `minmax()`** en las tarjetas ayuda a colocar automáticamente tantas columnas como quepan garantizando que ninguna tarjeta sea más pequeña que, este caso, `18rem`.
+
+Si sobrase espacio, las tarjetas crecen y se distribuyen de forma equilibrada.
 
 ## Guía de ejecución SASS
 
@@ -62,11 +63,11 @@ Antes de comenzar, debemos de tener instalado:
 ```
 /localhub-landing-12h/
 ├─ css
-    └─ main1.css
+    └─ main1.css (Cambiamos de nombre para diferenciarlo del archivo generado por SASS)
 ├─ sass/
     ├─ _mixins.scss
     ├─ _variables.scss
-    ├─ main2.scss
+    ├─ main2.scss (Cambiamos de nombre para el nuevo archivo .css generado)
 ```
 El archivo **editable**:  
 `sass/main2.scss`
@@ -143,12 +144,12 @@ Cada vez que guardes (Ctrl + S) cualquier archivo .scss, la hoja de estilos se r
 - Revisión de código para evitar en lo posible, errores
 
 
-## CAPTURAS
-Todas las capturas están en la carpeta de imágenes (`img/`)
+## Evidencias
+Todas las capturas de evidencia están en la carpeta de imágenes (`img/`)
 
 
-## ROLES
-- Paula: Estilos y accesibilidad: Responsive, Mejora 1
-- Renzo: Maquetación : Grid y flex, Mejora 2
+## Roles
+- Paula: Estilos y Accesibilidad: Responsive, Mejora 1
+- Renzo: Maquetación : Grid y Flex, Mejora 2
 
 
