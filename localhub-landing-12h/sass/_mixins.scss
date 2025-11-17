@@ -1,2 +1,16 @@
 // _mixins.scss — micro‑Sass (12 h)
-@mixin bp($w) { @media (min-width: $w) { @content; } }
+
+/* ============================
+   MIXINS - BREAKPOINTS
+============================ */
+@mixin bp($size) {
+  @if $size == mobile {
+    @media (max-width: 480px) { @content; }
+  }
+  @else if $size == tablet {
+    @media (max-width: 768px) { @content; }
+  }
+  @else if $size == large {
+    @media (max-width: 1024px) { @content; }
+  }
+}
