@@ -52,13 +52,66 @@ Si sobrase espacio e, las tarjetas crecen y se distribuyen de forma equilibrada.
 
 ### 1. Requisitos previos
 
-Antes de comenzar, asegúrate de tener instalado:
+Antes de comenzar, debemos de tener instalado:
 
 - **Visual Studio Code**
 - Extensión **Live Sass Compiler**  
-  👉 Nombre: *Live Sass Compiler (Ritwick Dey)*
-- Extensión **Live Server** (opcional pero recomendado)
+- Extensión **Live Server** (opcional pero recomendado).
 
+### 2. Estructura del proyecto
+```
+/localhub-landing-12h/
+├─ css
+    └─ main1.css
+├─ sass/
+    ├─ _mixins.scss
+    ├─ _variables.scss
+    ├─ main2.scss
+```
+El archivo **editable**:  
+`sass/main2.scss`
+
+El archivo **compilado** automáticamente:  
+`css/main2.css`
+
+### 3. Cómo abrir el proyecto
+
+1. Abre Visual Studio Code
+2. Ve a **File → Open Folder…**
+3. Selecciona la carpeta del proyecto
+
+## 4. Configuración de compilación Sass → CSS
+
+1. Abrir configuración JSON
+2. En VS Code, presiona:
+
+`Ctrl + Shift + P → “Preferences: Open Settings (JSON)”`
+
+3. Agrega o revisa que existan las siguientes líneas:
+
+```
+"liveSassCompile.settings.formats": [
+  {
+    "format": "expanded",
+    "extensionName": ".css",
+    "savePath": "/css"
+  }
+],
+"liveSassCompile.settings.generateMap": true
+```
+
+## 5. Compilar Sass a CSS
+
+1. En la barra inferior de VS Code haz clic en:
+
+**“Watch Sass”**
+
+Automáticamente se generarán:
+
+`/css/main.css
+/css/main.css.map`
+
+Cada vez que guardes (Ctrl + S) cualquier archivo .scss, la hoja de estilos se recompilará.
 
 ## Checklist (resumen)
 ## HTML & Semántica
@@ -83,13 +136,16 @@ Antes de comenzar, asegúrate de tener instalado:
 - ✅ `README.md` con decisiones y evidencias (validadores, capturas).
 - ✅ **7 capturas** (móvil, escritorio, responsive, validadores, temas) en `img/`.
 
+
 ## Uso de IA
 - Uso de chatGPT para recordar como usar GITHUB
 - Ayuda para entender bien el uso del grid y flex y porque no se nos colocaban bien las tarjetas de servicios.
 - Revisión de código para evitar en lo posible, errores
 
+
 ## CAPTURAS
 Todas las capturas están en la carpeta de imágenes (`img/`)
+
 
 ## ROLES
 - Paula: Estilos y accesibilidad: Responsive, Mejora 1
