@@ -81,7 +81,7 @@ El archivo **compilado** automáticamente:
 2. Ve a **File → Open Folder…**
 3. Selecciona la carpeta del proyecto
 
-## 4. Configuración de compilación Sass → CSS
+### 4. Configuración de compilación Sass → CSS
 
 1. Abrir configuración JSON
 2. En VS Code, presiona:
@@ -101,7 +101,7 @@ El archivo **compilado** automáticamente:
 "liveSassCompile.settings.generateMap": true
 ```
 
-## 5. Compilar Sass a CSS
+### 5. Compilar Sass a CSS
 
 1. En la barra inferior de VS Code haz clic en:
 
@@ -115,24 +115,25 @@ Automáticamente se generarán:
 Cada vez que guardes (Ctrl + S) cualquier archivo .scss, la hoja de estilos se recompilará.
 
 ## Checklist (resumen)
-## HTML & Semántica
+
+### HTML & Semántica
 - ✅ HTML **válido** (validator W3C). Un único `h1` por vista.
 - ✅ Landmarks (`header`, `nav`, `main`, `footer`) correctos.
 - ✅ Formularios con `label` y `required` (cuando proceda).
 - ✅ Imágenes con `alt` significativo; decorativas con `aria-hidden="true"`.
 
-## Accesibilidad AA
+### Accesibilidad AA
 - ✅ Contraste AA verificado.
 - ✅ Foco visible (`:focus-visible`).
 - ✅ Navegación solo con teclado sin trampas de foco.
 
-## CSS & Layout
+### CSS & Layout
 - ✅ Hojas externas; sin `!important` abusivo; comentarios aclaratorios.
 - ✅ **Grid**: **auto-fit/minmax**.
 - ✅ **Flex**: nav y tarjetas.
 - ✅ **Responsive** con **2 breakpoints**; sin desbordamientos.
 
-## Documentación
+### Documentación
 - ✅ `styleguide.md` actualizado (paleta, tipografía, espaciado, 2 componentes).
 - ✅ `README.md` con decisiones y evidencias (validadores, capturas).
 - ✅ **7 capturas** (móvil, escritorio, responsive, validadores, temas) en `img/`.
