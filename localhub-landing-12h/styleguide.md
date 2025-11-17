@@ -41,7 +41,7 @@ Fondo: Claro `#f9fafb`, Borde: `1px solid #e5e7eb`
 Borde: `var(--radius)`
 
 - Títulos: `h3` y párrafos `p` con colores adaptados al modo claro/oscuro.
-- 
+  
 - Botón: `.btn`
   - Propiedades:
     `display`: `inline-flex`, centrado
