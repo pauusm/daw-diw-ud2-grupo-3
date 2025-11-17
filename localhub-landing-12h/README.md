@@ -86,7 +86,7 @@ El archivo **compilado** automáticamente:
 1. Abrir configuración JSON
 2. En VS Code, presiona:
 
-`Ctrl + Shift + P → “Preferences: Open Settings (JSON)”`
+    `Ctrl + Shift + P → “Preferences: Open Settings (JSON)”`
 
 3. Agrega o revisa que existan las siguientes líneas:
 
@@ -105,7 +105,7 @@ El archivo **compilado** automáticamente:
 
 1. En la barra inferior de VS Code haz clic en:
 
-**“Watch Sass”**
+    **“Watch Sass”**
 
 Automáticamente se generarán:
 
