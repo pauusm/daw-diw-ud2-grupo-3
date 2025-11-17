@@ -43,9 +43,9 @@ Foco visible, contraste AA, navegación por teclado, labels/aria-*.
     `flex-direction: column`;
     `gap: var(--space-1)`;
     `padding`: `var(--space-2)`
-  - Fondo: Claro `#f9fafb`
+  - Fondo: Claro `#f9fafb` / Oscuro `#111827`
   - Borde:
-    `1px solid #e5e7eb`;
+    Claro `1px solid #e5e7eb` / Oscuro `#1f2937`
     `var(--radius)`
 
 - Títulos: `h3` y párrafos `p` con colores adaptados al modo claro/oscuro.
