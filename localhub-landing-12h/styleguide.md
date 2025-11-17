@@ -35,10 +35,14 @@ Sin lista de puntos: `list-style: none`
 Enlaces con color de acento: `var(--accent)`
 
 - Tarjeta: `.card`
-`flex-column` interno: `display: flex`; `flex-direction: column`; con `gap: var(--space-1)`
-`padding`: `var(--space-2)`
-Fondo: Claro `#f9fafb`, Borde: `1px solid #e5e7eb`
-Borde: `var(--radius)`
+  - Propiedades
+    `flex-column` interno:
+    `display: flex`
+    `flex-direction: column`
+    `gap: var(--space-1)`
+    `padding`: `var(--space-2)`
+  - Fondo: Claro `#f9fafb`
+  - Borde: `1px solid #e5e7eb`, `var(--radius)`
 
 - Títulos: `h3` y párrafos `p` con colores adaptados al modo claro/oscuro.
   
@@ -50,9 +54,9 @@ Borde: `var(--radius)`
   - Color: `#ffffff`
   - Borde: `var(--radius)`
   - `text-decoration: none`
-Estados:
-  `:hover` → `opacity: 0.9`
-  `:focus-visible` → `outline: 2px solid var(--accent)`, `outline-offset: 2px`
+  - Estados:
+    `:hover` → `opacity: 0.9`
+    `:focus-visible` → `outline: 2px solid var(--accent)`, `outline-offset: 2px`
 
 ## Estados de foco
 - `outline: 2px solid var(--accent)`;
