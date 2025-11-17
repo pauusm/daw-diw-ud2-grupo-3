@@ -48,6 +48,17 @@ En el formulario flex nos facilitó que los inputs se apilen con el mismo espaci
 - uto-fit con minmax() en las tarjetas ayuda a colocar automáticamente tantas columnas como quepan asegurando que ninguna tarjeta sea más pequeña de, este caso, 18rem. 
 Si sobrase espacio e, las tarjetas crecen y se distribuyen de forma equilibrada.
 
+## Guía de ejecución SASS
+
+## 1. Requisitos previos
+
+Antes de comenzar, asegúrate de tener instalado:
+
+- **Visual Studio Code**
+- Extensión **Live Sass Compiler**  
+  👉 Nombre: *Live Sass Compiler (Ritwick Dey)*
+- Extensión **Live Server** (opcional pero recomendado)
+
 
 ## Checklist (resumen)
 ## HTML & Semántica
