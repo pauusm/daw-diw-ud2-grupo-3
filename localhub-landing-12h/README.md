@@ -36,4 +36,25 @@
 Consulta `CHECKLIST.md` y márcala en la entrega final.
 
 ## Uso de IA
-Declara aquí cualquier apoyo de IA y la revisión humana aplicada.
+- Uso de chatGPT para recordar como usar GITHUB
+- Ayuda para entender bien el uso del grid y flex y porque no se nos colocaban bien las tarjetas de servivicios.
+-Revisión de código para evitar en lo posible, errores
+
+## Descripción proyecto y decisiones
+-Añadimos 3 variables adicionales 
+- Se definió 3 columnas en el grid, la columna central contiene el contenido y las columnas laterales actúan de márgenes.
+- No usamos grid template areas en el layout principal porque es mas sencillo y requiere de menos código utilizar minmax(), evitamos definir nombres a cada sección. 
+- Flexbox con micro layout nos pareció mas útil para elementos lineales y componentes más pequeños y dejar Grid para el esqueleto global.
+En el formulario flex nos facilitó que los inputs se apilen con el mismo espaciado, en el header permite colocar el logo a la izquierda y el nav a la derecha....
+- uto-fit con minmax() en las tarjetas ayuda a colocar automáticamente tantas columnas como quepan asegurando que ninguna tarjeta sea más pequeña de, este caso, 18rem. 
+Si sobrase espacio e, las tarjetas crecen y se distribuyen de forma equilibrada.
+
+
+## CAPTURAS
+-Las capturas están en la carpeta de imágenes
+
+## ROLES
+- Paula: Estilos y accesibilidad:responsive
+- Renzo: Maquetación : Grid y flex 
+
+

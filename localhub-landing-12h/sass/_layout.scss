@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: $font-base;
+  background: $bg;
+  color: $fg;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, $max-width) minmax(1rem, 1fr);
+  row-gap: $space-3;
+  padding: 0 $space-2;
+
+  > * {
+    width: 100%;
+    max-width: $max-width;
+    grid-column: 2;
+  }
+}
+
+.site-header {
+  display: flex;
+  justify-content: center;
+  padding: $space-2 0;
+}

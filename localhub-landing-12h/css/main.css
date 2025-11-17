@@ -1,9 +1,6 @@
 /* LocalHub – 12h CSS Final */
 
-/* =========================================================
-   VARIABLES DE DISEÑO
-   Sistema consistente de colores, tipografías y espaciados
-========================================================= */
+
 /* Variables base y tema */
 :root {
   --bg: #ffffff; /* color de fondo principal en modo claro */
@@ -25,69 +22,66 @@
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
-  --space-4: 3rem; /* Variable agregada para responsive */
+  --space-4: 3rem; /* Variable añadida para responsive */
 
-  /* Variables adicionales agregadas */
+  /* Variables adicionales añadidas */
   --radius: 0.75rem;
   --max-width: 70ch;
 }
 
 
-/* =========================================================
-   MODO OSCURO AUTOMÁTICO (Mejora 1)
-   Esto permite que el tema cambie automáticamente según la preferencia del sistema
-   en la práctica de accesibilidad visual
-========================================================= */
+
+ /* Modo oscuro automático - Mejora 1*/
+ /*Esto permite que el tema cambie automáticamente según la preferencia del sistema
+   en la práctica de accesibilidad visual*/
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b1020;
-    --fg: #ffffff;
-    --brand: #f9fafb;
+    --bg: #0b1020; /* fondo principal en modo oscuro */
+    --fg: #ffffff; /* color principal de texto en modo oscuro */
+    --brand: #f9fafb; /* color alterno para "LocalHub" en modo oscuro */
   }
   /* Cards más oscuras, con contraste adecuado */
   .layout .card {
-    background: #111827;
-    border-color: #1f2937;
+    background: #111827;  /* fondo de las tarjetas más oscuro*/
+    border-color: #1f2937; /* borde más sutil*/
   }
 
-  /* Logo principal con color alterno */
+  /* "LocalHub" -  para que destaque en oscuro */
   .site-nav .brand {
-    color:var(--brand);
-    font-weight: bold;
+    color:var(--brand); /*  variable definida arriba */
+    font-weight: bold; /*Texto en negrita*/
   }
 
   /* Títulos y textos dentro de las cards más visibles */
   .card h3 {
-    color: var(--fg);
+    color: var(--fg); /* título de la tarjeta del mismo color que el texto*/
   }
 
   .card p {
-    color: var(--fg);
+    color: var(--fg); 
   }
 }
 
 
-/* =========================================================
-   BASE + ACCESIBILIDAD
-   Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar)
-========================================================= */
+
+/* Base + accesibilidad mínima */
+/* Incluye padding y borde dentro del ancho total de los elementos (evita errores al maquetar). */
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-base);
-  background: var(--bg);
-  color: var(--fg);
-  line-height: 1.6;
+  margin: 0; /* quita margen por defecto del body */
+  font-family: var(--font-base); /* usa la tipografía definida arriba */
+  background: var(--bg); /* fondo dinámico según el modo */
+  color: var(--fg); /* color de texto principal */
 }
 
-/* Enfoque accesible
-   Permite navegar con tabulador */
+/* Enfoque accesible - Permite navegar con tabulador */
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent); /* outline visible con color de la variable*/
+  outline-offset: 2px;  /* separación entre el outline y el elemento */
 }
 
 /* Skip link AA
@@ -104,80 +98,74 @@ body {
   background: #fff;
   color: black;
   padding: .5rem 1rem;
-  z-index: 1000;
+
 }
 
 
-/* =========================================================
-   GRID MACRO – ORGANIZACIÓN GENERAL DEL MAIN
-   Grid para la estructura de página (auto-fit + minmax()).
-========================================================= */
+/* GRID MACRO – ORGANIZACIÓN GENERAL DEL MAIN
+Grid para la estructura de página (auto-fit + minmax()). */
 .layout {
   display: grid;
   grid-template-columns: minmax(1rem, 1fr) minmax(0, 70ch) minmax(1rem, 1fr);
-  row-gap: var(--space-3);       /* espacio entre secciones */
+  row-gap: var(--space-3);/* separación vertical entre las filas del grid */
   padding: 0 var(--space-2);
 }
 
 /* Todas las secciones internas comparten ancho máximo */
 .layout > * {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--max-width); /* límite máximo de anchura*/
 }
 
 main.layout > * {
-  grid-column: 2; /* todas las secciones en la columna central */
+  grid-column: 2; /* fuerza a los hijos directos a ocupar la segunda columna (la central) */
 }
 
-/* =========================================================
-   HEADER – Micro layout en Flexbox (logo izquierda / nav derecha)
-   Flexbox para componentes nav y cards
-========================================================= */
+/* HEADER – Micro layout en Flexbox (logo izquierda / nav derecha)
+   Flexbox para componentes nav y cards*/
 .site-header {
   display: flex;
   width: 100%;
   justify-content: center;
-  padding: var(--space-2) 0;
+  padding: var(--space-2) 0; /* padding vertical del header */
 }
 
+/* Barra de navegación */
 .site-nav {
   display: flex;
   width: 100%;
   align-items: center; /* Centra verticalmente los items */
   justify-content: space-between;  /* Separa logo y menú */
-  max-width: var(--max-width);
+  max-width: var(--max-width);/* evitar que la barra de navegación sea demasiado ancha */
   border-bottom: 1px solid #ddd; /* Añade línea debajo de la cabecera */
   padding: var(--space-2) 0;/* Espacio vertical del nav */
 }
 
 .site-nav a {
-  text-decoration: none;
+  text-decoration: none; /* quita subrayado */
 }
 
 .nav-list {
   display: flex;
   gap: var(--space-2); /* Separación entre enlaces */
-  list-style: none;
+  list-style: none; /*Quitar puntos que nos salían en el nav*/
   margin: 0;
   padding: 0;
 }
 
 .nav-list a{
-  color:var(--accent);
+  color:var(--accent);  /* color de los enlaces usando variable*/
 }
 
 .brand{
-  color:var(--brand);
-  font-weight: bold;
+  color:var(--brand); 
+  font-weight: bold; /*Texto en  negrita*/
 }
 
 
-/* =========================================================
-   HERO - Sección centrada verticalmente
-========================================================= */
+/*HERO - Sección centrada verticalmente*/
 .hero {
-  text-align: center; /* Si lo quieres igual que la captura, solo lo quitas */
-  margin: var(--space-2) 0;
+  margin: var(--space-2) 0; /* espacio vertical alrededor del hero */
 }
 
 .hero h1 {
@@ -193,14 +181,14 @@ main.layout > * {
 
 /* Botón accesible */
 .btn {
-  display: inline-flex;
+  display: inline-flex;  /* alineación centrada del contenido del botón */
   align-items: center;
   justify-content: center;
   padding: .6rem 1.2rem;
   background: var(--accent);
   color: #fff;
-  border-radius: var(--radius);
-  text-decoration: none;
+  border-radius: var(--radius); /* esquinas redondeadas con variable */
+  text-decoration: none;    /* quita subrayado */
 }
 
 .btn:hover {
@@ -208,22 +196,20 @@ main.layout > * {
 }
 
 
-/* =========================================================
-   SERVICIOS – Grid auto-fit
-   Grid macro dentro de una sección
-========================================================= */
+/* SERVICIOS – Grid auto-fit - Grid macro dentro de una sección*/
 
 /* Título alineado a la izquierda como la maqueta */
 .services > h2 {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1; /* hace que el h2 abarque todas las columnas del grid padre */
   width: 100%;
   margin: 0;
 }
 
-/* Grid auto-fit + minmax → requisito del documento */
+/* Grid auto-fit + minmax  */
 .grid-auto {
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-2);/* separación entre tarjetas */
+  /* distribución automática: tantas columnas como quepan, mínimo 18rem */
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   justify-items: center; /* Centra las tarjetas si hay espacio extra */ 
 }
@@ -241,13 +227,11 @@ main.layout > * {
 }
 
 .card h3 {
-  margin: 0;
+  margin: 0; /*Elimina el márgen por defecto*/
 }
 
 
-/* =========================================================
-   CONTACTO – Formulario accesible en cascada
-========================================================= */
+/*Formulario accesible en cascada*/
 .contact h2 {
   margin-bottom: var(--space-2);
 }
@@ -261,7 +245,7 @@ main.layout > * {
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.25rem; /* espacio entre label e input */
 }
 
 .contact input,
@@ -271,46 +255,48 @@ main.layout > * {
   border: 1px solid #ccc;
 }
 
-/* Botón igual de ancho que los inputs */
+/*Ajustar botón formulario*/
 .contact form .btn {
-  margin: var(--space-1) 0 var(--space-3);
-  border: none;
+  margin: var(--space-1) 0 var(--space-3); /* margen superior e inferior */
+  border: none;   /* botón sin borde */
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER*/
 .site-footer {
   margin: 0 auto;
   max-width: calc(var(--max-width) + 10ch);
   padding: var(--space-3) 0;
-  font-size: .875rem;
+  font-size: .875rem;  /* tamaño de texto más pequeño para el footer */
   border-top: 1px solid #ddd;
 }
 
-/* Responsive breakpoint - para móvil */
-/* Dentro de los paréntesis se establece una condición, el ancho máximo si es para móviles el breakpoint,
-el ancho mínimo si es para escritorio */
-/* El screen es para seleccionar solo pantallas (ordenadores, móviles...) */
+/*RESPONSIVE*/
 
-/* =========================================================
-   BREAKPOINT 1 — TABLET (<= 1024px)
-   Ajustes para pantallas amplias pero no de escritorio
-========================================================= */
+/*Breakpoint 1 — pantallas amplias, no de escritorio */
+/*Dentro de los paréntesis se establece una condición, el ancho máximo si es para móviles el breakpoint,
+el ancho mínimo si es para escritorio*/
+/*Screen es para seleccionar solo pantallas(ordenadores, móviles...)*/
 @media (max-width: 1024px) {
 
-  /* Estructura grid modificada:  Se amplía el ancho central de 70ch → 90ch */
+  /* Estructura grid modificada:  Se amplía el ancho central de 70ch a 90ch */
+  /* Redefine las 3 columnas:
+       columna lateral izquierda: mínimo 1rem, puede crecer hasta 1fr (margen flexible)
+       columna central: ahora permite hasta 90ch como máximo (más ancho para contenido)
+       columna lateral derecha: simétrica a la izquierda
+       Esto hace que la columna central sea más ancha en pantallas ≤1024px. */
+  
   .layout {
     grid-template-columns: minmax(1rem, 1fr) minmax(0, 90ch) minmax(1rem, 1fr);
   }
 
   /* Se elimina el max-width de 70ch en las secciones internas */
+  /*Quita la limitación de ancho interno en los hijos directos de .layout */
   .layout > * {
-    max-width: none; /* Antes 70ch */
-  } /* Ahora se aprovecha el nuevo ancho de 90ch */
+    max-width: none; 
+  } 
 
-  /* Header ligeramente acomodado y separado de los bordes */
+  /* Aumenta el padding horizontal del header para separarlo más de los bordes*/
   .site-header {
     padding: 0 var(--space-3);
   }
@@ -318,51 +304,71 @@ el ancho mínimo si es para escritorio */
   /* Navegación ajustada al nuevo ancho útil */
   .site-nav {
     max-width: calc(var(--max-width) + 20ch); /* Cálculo con variable para extender borde del nav */
-    margin: auto;
+    margin: auto; /*Centra horzontalmente*/
   }
 
-  /* auto-fit se fuerza 3 columnas estables en tablet grande */
+  /* auto-fit se fuerza 3 columnas iguales*/
   .grid-auto {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* Footer centrado, sin recortes específicos en este breakpoint */
+  /* Footer centrad0 */
   .site-footer {
     text-align: center;
   }
 }
 
-/* =========================================================
-   BREAKPOINT 2 — INTERMEDIO (<= 768px)
-   Ajustes para tablets pequeñas / pantallas medianas
-========================================================= */
+/* Responsive breakpoint — para tablets pequeñas/pantallas medianas*/
 @media (max-width: 768px) {
-
-  /* auto-fit se fuerza el colapso a 1 columna */
+  /* auto-fit fuerza el colapso a 1 columna */
   .grid-auto { 
     grid-template-columns: 1fr; 
-  } /* Ahora no puede hacerlo por sí solo al haber aumentado el ancho en 1024px */
+  } 
 
-  /* El footer vuelve a ocupar todo el ancho disponible */
+  /* Quita la limitación de ancho del footer */
   .site-footer {
     max-width: none;
   }
 }
 
-/* =========================================================
-   RESPONSIVE 3 — MÓVIL ( <= 480px)
-   Ajustes para pantallas pequeñas
-========================================================= */
-@media (max-width: 480px) {
+/*Responsive breakpoint - para móvil*/
+@media screen and (max-width: 360px){
+ 
+.site-nav{
+  align-items: flex-start; /* Agrupa los elementos flex arriba del contenedor*/
+  gap: var(--space-1); /* añade separación vertical entre secciones */
+}
 
-  /* Menú vertical */
-  .site-nav {
-    flex-direction: column;
-    gap: var(--space-2);
-  }
+  /* Ajustar layout general */
+main.layout{
+  /* Dejamos solo una columna*/
+  grid-template-columns: 1fr;
+  grid-template-areas: "header" "main" "footer";
+  /*Márgenes laterales para que no queden pegados al borde de la pantalla*/
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+}
 
-  /* Enlaces de navegación más separados */
-  .nav-list {
-    gap: var(--space-4);
-  }
+  /* Para que las tarjetas queden una debajo de otra */
+#servicios {
+  flex-direction: column; /* Se apila en columna */
+  align-items: flex-start; /* Agrupa los elementos flex en la izquierda */
+  
+}
+
+/*Ajustar botón formulario*/
+.contact form .btn {
+  width: 100%;/*El ancho del botón ocupará toda la pantalla*/
+ 
+}
+/*Ajustamos tamaño de las tarjetas*/
+.card{
+  width: 100%;
+}
+
+/* tamaño de los input del formulario */
+.contact form input{
+  width: 100%;
+ 
+}
 }
