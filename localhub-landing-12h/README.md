@@ -6,8 +6,8 @@
 ```
 /localhub-landing-12h/
 ├─ index.html
-├─ css/main.css
-├─ sass/  (opcional – micro‑Sass)
+├─ css/
+├─ sass/
 ├─ img/
 └─ styleguide.md
 ```
@@ -33,12 +33,32 @@
 - Solo `sass/_variables.scss`, `sass/_mixins.scss` y `sass/main.scss` con 1 mixin de breakpoint. Compila a `css/main.css` con **VSCode Live Sass Compiler**.
 
 ## Checklist (resumen)
-Consulta `CHECKLIST.md` y márcala en la entrega final.
+## HTML & Semántica
+- ✅ HTML **válido** (validator W3C). Un único `h1` por vista.
+- ✅ Landmarks (`header`, `nav`, `main`, `footer`) correctos.
+- ✅ Formularios con `label` y `required` (cuando proceda).
+- ✅ Imágenes con `alt` significativo; decorativas con `aria-hidden="true"`.
+
+## Accesibilidad AA
+- ✅ Contraste AA verificado.
+- ✅ Foco visible (`:focus-visible`).
+- ✅ Navegación solo con teclado sin trampas de foco.
+
+## CSS & Layout
+- ✅ Hojas externas; sin `!important` abusivo; comentarios aclaratorios.
+- ✅ **Grid**: **auto-fit/minmax**.
+- ✅ **Flex**: nav y tarjetas.
+- ✅ **Responsive** con **2 breakpoints**; sin desbordamientos.
+
+## Documentación
+- ✅ `styleguide.md` actualizado (paleta, tipografía, espaciado, 2 componentes).
+- ✅ `README.md` con decisiones y evidencias (validadores, capturas).
+- ✅ **7 capturas** (móvil, escritorio, responsive, verificaciones, temas). ------> 
 
 ## Uso de IA
 - Uso de chatGPT para recordar como usar GITHUB
-- Ayuda para entender bien el uso del grid y flex y porque no se nos colocaban bien las tarjetas de servivicios.
--Revisión de código para evitar en lo posible, errores
+- Ayuda para entender bien el uso del grid y flex y porque no se nos colocaban bien las tarjetas de servicios.
+- Revisión de código para evitar en lo posible, errores
 
 ## Descripción proyecto y decisiones
 -Añadimos 3 variables adicionales 
@@ -51,10 +71,10 @@ Si sobrase espacio e, las tarjetas crecen y se distribuyen de forma equilibrada.
 
 
 ## CAPTURAS
--Las capturas están en la carpeta de imágenes
+Todas las capturas están en la carpeta de imágenes
 
 ## ROLES
-- Paula: Estilos y accesibilidad:responsive
-- Renzo: Maquetación : Grid y flex 
+- Paula: Estilos y accesibilidad: Responsive, Mejora 1
+- Renzo: Maquetación : Grid y flex, Mejora 2
 
 
