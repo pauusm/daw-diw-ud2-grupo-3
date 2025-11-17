@@ -28,24 +28,28 @@ Foco visible, contraste AA, navegación por teclado, labels/aria-*.
 ## Componentes principales
 - Navegación: `.site-nav`
 Layout: `display: flex`; `justify-content: space-between`; `align-items: center`
+
 - Logo a la izquierda, enlaces a la derecha.
 **gap** entre enlaces: `var(--space-2)`
 Sin lista de puntos: `list-style: none`
 Enlaces con color de acento: `var(--accent)`
+
 - Tarjeta: `.card`
-Flex column interno: `display: flex`; `flex-direction: column`; con `gap: var(--space-1)`
-Padding: `var(--space-2)`
-Fondo principal: Claro `#f9fafb`, `borde: 1px solid #e5e7eb`
-Borde redondeado: `var(--radius)`
+`flex-column` interno: `display: flex`; `flex-direction: column`; con `gap: var(--space-1)`
+`padding`: `var(--space-2)`
+Fondo: Claro `#f9fafb`, Borde: `1px solid #e5e7eb`
+Borde: `var(--radius)`
+
 - Títulos: `h3` y párrafos `p` con colores adaptados al modo claro/oscuro.
+- 
 - Botón: `.btn`
-Propiedades:
-  `display`: `inline-flex`, centrado
-  `padding`: `6rem` `1.2rem`
-  Fondo: `var(--accent)`
-  Color: `#ffffff`
-  Borde redondeado: `var(--radius)`
-  `text-decoration: none`
+  - Propiedades:
+    `display`: `inline-flex`, centrado
+    `padding`: `6rem` `1.2rem`
+  - Fondo: `var(--accent)`
+  - Color: `#ffffff`
+  - Borde: `var(--radius)`
+  - `text-decoration: none`
 Estados:
   `:hover` → `opacity: 0.9`
   `:focus-visible` → `outline: 2px solid var(--accent)`, `outline-offset: 2px`
