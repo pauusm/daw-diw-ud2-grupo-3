@@ -3,7 +3,7 @@
 ## Paleta
 - Texto: Claro `#111111` / Oscuro `#111111`
 - Fondo: Claro `#ffffff` / Oscuro `#0b1020`
-- Tarjetas:                                 → añadido en **Mejora 2 (SASS)**
+- Tarjetas: → añadido en **Mejora 2 (SASS)**
   - Fondo: Claro `#f9fafb` / Oscuro `#111827`
   - Bordes: Claro `#e5e7eb` / Oscuro `#1f2937`
 - Brand: Claro `#1e293b` / Oscuro `#f9fafb` → añadido en **Mejora 2 (SASS)**
