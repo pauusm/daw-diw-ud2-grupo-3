@@ -103,9 +103,7 @@ El archivo **compilado** automáticamente:
 
 ### 5. Compilar Sass a CSS
 
-1. En la barra inferior de VS Code haz clic en:
-
-    **“Watch Sass”**
+1. En la barra inferior de VS Code haz clic en: **“Watch Sass”**
 
 Automáticamente se generarán:
 
